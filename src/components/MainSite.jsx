@@ -514,14 +514,14 @@ export default function MainSite() {
 
             <div style={contactCard}>
               <div style={contactTitle}>📞 Phone / WhatsApp</div>
-              <div style={contactText}>+91-XXXXXXXXXX (example)</div>
+              <div style={contactText}>+91-7995246347 (example)</div>
               <div style={contactHint}>Add your real number later.</div>
             </div>
 
             <div style={contactCard}>
               <div style={contactTitle}>🌐 Website</div>
-              <div style={contactText}>www.ksbaa.com</div>
-              <div style={contactHint}>Hosted via GitHub + domain DNS.</div>
+              <div style={contactText}>https://www.ksbaapos.com</div>
+              <div style={contactHint}>Hosted on cloud.</div>
             </div>
           </div>
 
