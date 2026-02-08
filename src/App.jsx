@@ -1,6 +1,7 @@
-import React from "react";
-import MainSite from "./components/MainSite.jsx";
-
 export default function App() {
-  return <MainSite />;
+  return (
+    <div style={{ padding: 40, fontSize: 22, fontWeight: 900 }}>
+      KSBAA site working ✅
+    </div>
+  );
 }
