@@ -508,7 +508,7 @@ export default function MainSite() {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 14, marginTop: 16 }}>
             <div style={contactCard}>
               <div style={contactTitle}>📧 Email</div>
-              <div style={contactText}>support@ksbaa.com (example)</div>
+              <div style={contactText}>taskmasterpro99@gmail.com</div>
               <div style={contactHint}>We can replace this with your real email later.</div>
             </div>
 
