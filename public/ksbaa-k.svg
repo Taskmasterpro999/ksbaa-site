@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">KSBAA K</title>
+  <desc id="desc">A metallic black and red K symbol for KSBAA Gaming and IT Solutions.</desc>
+  <defs>
+    <radialGradient id="redGlow" cx="72%" cy="26%" r="78%">
+      <stop stop-color="#ff285f" stop-opacity="0.96"/>
+      <stop offset="0.38" stop-color="#7b102a" stop-opacity="0.72"/>
+      <stop offset="1" stop-color="#050607" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="metal" x1="14" y1="8" x2="116" y2="120" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#4e565d"/>
+      <stop offset="0.18" stop-color="#171b20"/>
+      <stop offset="0.46" stop-color="#050607"/>
+      <stop offset="0.72" stop-color="#252b31"/>
+      <stop offset="1" stop-color="#08090b"/>
+    </linearGradient>
+    <linearGradient id="edge" x1="22" y1="15" x2="106" y2="116" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ffffff" stop-opacity="0.58"/>
+      <stop offset="0.38" stop-color="#ffffff" stop-opacity="0.1"/>
+      <stop offset="1" stop-color="#ff285f" stop-opacity="0.36"/>
+    </linearGradient>
+    <linearGradient id="kMetal" x1="42" y1="26" x2="101" y2="102" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ffffff"/>
+      <stop offset="0.38" stop-color="#d8dde2"/>
+      <stop offset="0.68" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#aab3bc"/>
+    </linearGradient>
+    <filter id="shadow" x="-24%" y="-24%" width="148%" height="148%">
+      <feDropShadow dx="0" dy="12" stdDeviation="11" flood-color="#000000" flood-opacity="0.54"/>
+      <feDropShadow dx="0" dy="0" stdDeviation="8" flood-color="#ff285f" flood-opacity="0.26"/>
+    </filter>
+  </defs>
+  <rect width="128" height="128" rx="30" fill="#050607"/>
+  <rect x="10" y="10" width="108" height="108" rx="26" fill="url(#metal)" filter="url(#shadow)"/>
+  <rect x="10" y="10" width="108" height="108" rx="26" fill="url(#redGlow)"/>
+  <rect x="12" y="12" width="104" height="104" rx="24" fill="none" stroke="url(#edge)" stroke-width="2"/>
+  <path d="M24 22c21-9 50-10 80 0-24 5-54 13-80 31V22Z" fill="#ffffff" opacity="0.16"/>
+  <path d="M39 31h19v30l27-30h24L78 64l34 33H87L58 70v27H39V31Z" fill="url(#kMetal)"/>
+  <path d="M58 70v27H39V31h19v30l27-30h24L78 64l8 8-16 12-12-14Z" fill="#050607" opacity="0.18"/>
+  <path d="M86 31h23L78 64l7 7-13 10-14-12v-8l28-30Z" fill="#ff285f" opacity="0.18"/>
+</svg>
