@@ -157,13 +157,13 @@ export default function MainSite() {
           <div className="hero-visual" aria-label="KSBAA premium technology showcase">
             <div className="watch-stack">
               <div className="smart-watch weather-watch">
-                <span>24 clock now</span>
+                <span>Systems live</span>
                 <strong>KSBAA</strong>
-                <small>Systems live</small>
+                <small>Business software</small>
               </div>
               <div className="smart-watch time-watch">
-                <span>Sat 03</span>
-                <strong>18:39</strong>
+                <span>Australia</span>
+                <strong>Live</strong>
                 <small>Australia client</small>
               </div>
             </div>
