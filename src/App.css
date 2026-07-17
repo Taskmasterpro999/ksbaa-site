@@ -1290,12 +1290,24 @@ textarea {
 
 .site-footer {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   gap: 16px;
   padding: 20px clamp(18px, 5vw, 72px);
   background: #050607;
   color: rgba(255, 255, 255, 0.68);
   font-size: 13px;
+}
+
+.site-footer a {
+  color: #ffcf67;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  color: #ffffff;
+  text-decoration: underline;
 }
 
 @media (max-width: 1050px) {

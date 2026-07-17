@@ -370,6 +370,7 @@ export default function MainSite() {
       <footer className="site-footer">
         <span>Copyright {new Date().getFullYear()} K.S.B.A.A Gaming & IT Solutions Pvt Ltd</span>
         <span>Mail servers, HR systems, SaaS products, private AI, and end to end apps.</span>
+        <a href="/privacy-policy/">Privacy Policy</a>
       </footer>
     </main>
   );
