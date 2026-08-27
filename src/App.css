@@ -27,7 +27,7 @@
   --graphite: #0b0d10;
   --steel: #1d252b;
   --mist: rgba(255, 255, 255, 0.72);
-  --display-font: "Mont KSBAA", "Lexend Deca", Inter, ui-sans-serif, system-ui, sans-serif;
+  --display-font: "Lexend Deca", Inter, ui-sans-serif, system-ui, sans-serif;
   color: #132033;
   background: #050607;
   font-family: "Lexend Deca", Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -101,7 +101,7 @@ textarea {
     linear-gradient(135deg, #4e565d 0%, #11151a 24%, #050607 52%, #252b31 78%, #08090b 100%);
   color: #f4f7fa;
   font-size: 20px;
-  font-weight: 900;
+  font-weight: 700;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.22), 0 0 14px rgba(255, 40, 95, 0.45);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.42),
@@ -119,6 +119,7 @@ textarea {
   color: #ffffff;
   font-family: var(--display-font);
   font-size: 15px;
+  font-weight: 700;
   letter-spacing: 0.12em;
 }
 
@@ -126,7 +127,7 @@ textarea {
   margin-top: 2px;
   color: rgba(255, 255, 255, 0.66);
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .nav-links {
@@ -142,7 +143,7 @@ textarea {
   padding: 9px 13px;
   color: rgba(255, 255, 255, 0.82);
   font-size: 14px;
-  font-weight: 800;
+  font-weight: 600;
   text-decoration: none;
 }
 
@@ -195,7 +196,7 @@ textarea {
   color: #ffcf67;
   font-size: 12px;
   font-family: var(--display-font);
-  font-weight: 900;
+  font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -209,7 +210,7 @@ textarea {
   display: block;
   color: rgba(255, 255, 255, 0.64);
   font-size: clamp(14px, 1.4vw, 18px);
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: 0.16em;
   text-transform: uppercase;
 }
@@ -220,7 +221,7 @@ textarea {
   font-family: var(--display-font);
   font-size: clamp(58px, 9vw, 118px);
   line-height: 0.86;
-  font-weight: 800;
+  font-weight: 700;
   text-shadow: 0 18px 55px rgba(0, 0, 0, 0.36);
 }
 
@@ -231,7 +232,7 @@ textarea {
   padding-left: 14px;
   color: #ffffff;
   font-size: clamp(20px, 2.4vw, 34px);
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1.05;
 }
 
@@ -258,7 +259,7 @@ textarea {
   min-height: 46px;
   border-radius: 8px;
   padding: 12px 18px;
-  font-weight: 900;
+  font-weight: 700;
   text-decoration: none;
 }
 
@@ -415,7 +416,7 @@ textarea {
   border: 2px solid rgba(255, 255, 255, 0.42);
   color: rgba(255, 255, 255, 0.84);
   font-size: 58px;
-  font-weight: 800;
+  font-weight: 600;
   clip-path: polygon(0 18%, 66% 18%, 66% 0, 100% 50%, 66% 100%, 66% 78%, 0 78%);
 }
 
@@ -446,7 +447,7 @@ textarea {
     rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(16px);
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .content-section,
@@ -475,6 +476,7 @@ textarea {
   color: #ffffff;
   font-family: var(--display-font);
   font-size: clamp(31px, 4.2vw, 52px);
+  font-weight: 700;
   line-height: 1.05;
 }
 
@@ -572,13 +574,13 @@ textarea {
     linear-gradient(135deg, rgba(255, 138, 0, 0.92), rgba(15, 118, 110, 0.78));
   color: #ffffff;
   font-size: 12px;
-  font-weight: 950;
+  font-weight: 700;
 }
 
 .card-topline span {
   color: #0f766e;
   font-size: 12px;
-  font-weight: 950;
+  font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -590,6 +592,7 @@ textarea {
   color: #ffffff;
   font-family: var(--display-font);
   font-size: 22px;
+  font-weight: 700;
   line-height: 1.16;
 }
 
@@ -620,7 +623,7 @@ textarea {
   position: relative;
   padding-left: 18px;
   color: rgba(255, 255, 255, 0.76);
-  font-weight: 750;
+  font-weight: 500;
 }
 
 .service-card li::before,
@@ -647,16 +650,21 @@ textarea {
 
 .proof-card {
   display: grid;
-  grid-template-columns: 1fr 0.9fr;
-  gap: 28px;
+  grid-template-columns: minmax(0, 0.86fr) minmax(420px, 1.14fr);
+  gap: clamp(24px, 4vw, 48px);
   max-width: 1180px;
   margin: 0 auto;
-  align-items: end;
+  align-items: center;
+}
+
+.proof-copy {
+  display: grid;
+  gap: 26px;
 }
 
 .proof-stats {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: 1fr;
   gap: 12px;
 }
 
@@ -684,12 +692,130 @@ textarea {
   color: #f7c948;
   font-family: var(--display-font);
   font-size: 24px;
+  font-weight: 700;
 }
 
 .proof-stats span {
   margin-top: 6px;
   color: rgba(255, 255, 255, 0.68);
   line-height: 1.45;
+}
+
+.client-review-preview {
+  position: relative;
+  display: block;
+  width: 100%;
+  min-width: 0;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 24px;
+  padding: 12px;
+  overflow: hidden;
+  cursor: zoom-in;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.04)),
+    rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 34px 100px rgba(0, 0, 0, 0.42),
+    0 0 0 1px rgba(255, 207, 103, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28);
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.client-review-preview::before {
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background:
+    linear-gradient(120deg, rgba(255, 207, 103, 0.48), transparent 30%),
+    linear-gradient(300deg, rgba(104, 215, 255, 0.24), transparent 40%);
+  content: "";
+  opacity: 0.58;
+  pointer-events: none;
+}
+
+.client-review-preview:hover,
+.client-review-preview:focus-visible {
+  border-color: rgba(255, 207, 103, 0.72);
+  transform: translateY(-4px);
+  box-shadow:
+    0 42px 120px rgba(0, 0, 0, 0.52),
+    0 0 42px rgba(255, 138, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.34);
+}
+
+.client-review-preview:focus-visible {
+  outline: 3px solid rgba(104, 215, 255, 0.82);
+  outline-offset: 4px;
+}
+
+.client-review-preview img {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.34);
+}
+
+.review-preview-badge {
+  position: absolute;
+  z-index: 2;
+  right: 22px;
+  bottom: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  border-radius: 999px;
+  padding: 9px 12px;
+  background: rgba(5, 6, 7, 0.82);
+  color: #ffcf67;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  backdrop-filter: blur(16px);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.34);
+}
+
+.review-lightbox {
+  position: fixed;
+  z-index: 50;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 72px 20px 24px;
+  overflow: auto;
+  background: rgba(2, 4, 8, 0.86);
+  backdrop-filter: blur(18px);
+}
+
+.review-lightbox img {
+  display: block;
+  width: min(1560px, 100%);
+  height: auto;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 36px 110px rgba(0, 0, 0, 0.62);
+}
+
+.review-lightbox-close {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  min-height: 42px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 8px;
+  padding: 10px 14px;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  font-weight: 700;
+  backdrop-filter: blur(16px);
+}
+
+.review-lightbox-close:hover,
+.review-lightbox-close:focus-visible {
+  background: #ffcf67;
+  color: #111827;
 }
 
 .split-section {
@@ -703,6 +829,151 @@ textarea {
   display: grid;
   gap: 12px;
   margin-top: 26px;
+}
+
+.product-card {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  gap: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 18px;
+  padding: 18px;
+  color: #ffffff;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.045)),
+    rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(24px) saturate(160%);
+  box-shadow:
+    0 16px 45px rgba(0, 0, 0, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  text-decoration: none;
+}
+
+.product-card::before {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(128deg, rgba(255, 255, 255, 0.2), transparent 34%, rgba(255, 255, 255, 0.055) 72%);
+  content: "";
+  pointer-events: none;
+}
+
+.featured-product-card {
+  border-color: rgba(104, 215, 255, 0.34);
+}
+
+.featured-product-card:hover,
+.featured-product-card:focus-visible {
+  border-color: rgba(255, 207, 103, 0.72);
+  transform: translateY(-2px);
+  box-shadow:
+    0 22px 70px rgba(0, 0, 0, 0.34),
+    0 0 32px rgba(104, 215, 255, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.24);
+}
+
+.featured-product-card:focus-visible {
+  outline: 3px solid rgba(104, 215, 255, 0.82);
+  outline-offset: 4px;
+}
+
+.product-card-head,
+.product-card h3,
+.product-card p,
+.product-points,
+.product-url {
+  position: relative;
+  z-index: 1;
+}
+
+.product-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.product-card-head > span {
+  flex: 0 0 auto;
+  border-radius: 999px;
+  padding: 7px 10px;
+  background: rgba(104, 215, 255, 0.16);
+  color: #9ee8ff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.product-logo-panel {
+  display: grid;
+  width: min(100%, 300px);
+  min-height: 68px;
+  place-items: center;
+  border-radius: 12px;
+  padding: 10px 14px;
+  background: #ffffff;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.22);
+}
+
+.product-logo-panel img {
+  display: block;
+  width: 100%;
+  max-height: 62px;
+  object-fit: contain;
+}
+
+.product-letter-mark {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 14px;
+  background:
+    radial-gradient(circle at 35% 25%, rgba(255, 255, 255, 0.34), transparent 32px),
+    linear-gradient(135deg, rgba(255, 138, 0, 0.92), rgba(15, 118, 110, 0.78));
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.product-card h3 {
+  margin: 0;
+  font-family: var(--display-font);
+  font-size: clamp(24px, 3vw, 34px);
+  font-weight: 700;
+  line-height: 1.05;
+}
+
+.product-card p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.65;
+}
+
+.product-points {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.product-points span {
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  padding: 7px 10px;
+  color: rgba(255, 255, 255, 0.84);
+  background: rgba(255, 255, 255, 0.08);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.product-url {
+  width: fit-content;
+  color: #ffcf67;
+  font-size: 14px;
+  font-weight: 600;
+  overflow-wrap: anywhere;
 }
 
 .product-item {
@@ -728,7 +999,7 @@ textarea {
   z-index: 1;
   margin: 0;
   color: rgba(255, 255, 255, 0.78);
-  font-weight: 800;
+  font-weight: 500;
 }
 
 .process-card {
@@ -752,7 +1023,7 @@ textarea {
   border-radius: 8px;
   background: #111827;
   color: #f7c948;
-  font-weight: 950;
+  font-weight: 700;
 }
 
 .process-step strong {
@@ -805,7 +1076,7 @@ textarea {
     rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(24px) saturate(160%);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
-  font-weight: 900;
+  font-weight: 600;
 }
 
 .aptel-section {
@@ -855,7 +1126,7 @@ textarea {
   color: #ffcf67;
   font-family: var(--display-font);
   font-size: 12px;
-  font-weight: 900;
+  font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -865,7 +1136,7 @@ textarea {
   color: #ffffff;
   font-family: var(--display-font);
   font-size: clamp(46px, 5vw, 74px);
-  font-weight: 800;
+  font-weight: 700;
   line-height: 0.9;
   text-shadow: 0 18px 55px rgba(0, 0, 0, 0.38);
   overflow-wrap: normal;
@@ -887,7 +1158,7 @@ textarea {
   padding-left: 14px;
   color: #ffffff;
   font-size: clamp(20px, 2.2vw, 31px);
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1.08;
 }
 
@@ -1054,7 +1325,7 @@ textarea {
   color: #ffd166;
   font-family: var(--display-font);
   font-size: 12px;
-  font-weight: 950;
+  font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -1090,7 +1361,7 @@ textarea {
   backdrop-filter: blur(22px) saturate(160%);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18);
   font-size: 11px;
-  font-weight: 900;
+  font-weight: 600;
   line-height: 1.25;
   overflow-wrap: anywhere;
 }
@@ -1108,7 +1379,7 @@ textarea {
   color: #ffffff;
   font-size: 8px;
   font-style: normal;
-  font-weight: 950;
+  font-weight: 700;
   letter-spacing: 0;
   text-transform: uppercase;
 }
@@ -1171,7 +1442,7 @@ textarea {
   padding: 12px;
   background: rgba(247, 201, 72, 0.18);
   color: #6f5200;
-  font-weight: 800;
+  font-weight: 600;
 }
 
 .pending-note {
@@ -1191,7 +1462,7 @@ textarea {
   margin-top: 14px;
   color: #334155;
   font-size: 13px;
-  font-weight: 850;
+  font-weight: 600;
 }
 
 .review-form input,
@@ -1217,7 +1488,7 @@ textarea {
   border-radius: 8px;
   background: #111827;
   color: #ffffff;
-  font-weight: 950;
+  font-weight: 700;
   cursor: pointer;
 }
 
@@ -1277,7 +1548,7 @@ textarea {
   z-index: 1;
   color: rgba(255, 255, 255, 0.62);
   font-size: 13px;
-  font-weight: 800;
+  font-weight: 600;
   text-transform: uppercase;
 }
 
@@ -1301,7 +1572,7 @@ textarea {
 
 .site-footer a {
   color: #ffcf67;
-  font-weight: 800;
+  font-weight: 600;
   text-decoration: none;
 }
 
@@ -1331,7 +1602,7 @@ textarea {
   border-radius: 8px;
   padding: 10px 14px;
   color: #ffffff;
-  font-weight: 800;
+  font-weight: 600;
   text-decoration: none;
 }
 
@@ -1376,7 +1647,7 @@ textarea {
 .policy-updated {
   margin-top: 12px;
   color: #ffcf67;
-  font-weight: 800;
+  font-weight: 600;
 }
 
 .policy-card ul {

@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
+import clientReviewImage from "../../Client Review.png";
+import peopleOpsCoreLogo from "../../poc-logo.png";
 
 const navItems = [
   { id: "services", label: "Services" },
@@ -41,9 +43,43 @@ const services = [
 ];
 
 const products = [
-  "AptelNow.com for Telugu news, education, business, comedy, entertainment, local games, cooking, sports, weather, government jobs, weekly astrology, dummy trading, trading basics unlock, and pre owned item videos",
-  "Custom HR portals for teams that need attendance, payroll, and approvals",
-  "Private mail server packages for companies that want domain email control",
+  {
+    name: "PeopleOpsCore",
+    eyebrow: "Own SaaS product",
+    url: "https://peopleopscore.com",
+    logo: peopleOpsCoreLogo,
+    logoAlt: "PeopleOpsCore logo",
+    desc: "PeopleOpsCore is KSBAA's own multi-tenant HR SaaS for companies that want a monthly subscription HR system without building from scratch.",
+    points: [
+      "Onboarding",
+      "Attendance",
+      "Notice period",
+      "Documents",
+      "Trainings",
+      "Reviews",
+      "Logs",
+      "Role based access",
+    ],
+  },
+  {
+    name: "AptelNow.com",
+    eyebrow: "KSBAA platform",
+    url: "https://aptelnow.com",
+    desc: "Telugu news, education, business, entertainment, local games, weather, government jobs, weekly astrology, dummy trading, trading basics, and pre owned item videos.",
+    points: ["Telugu media", "Local discovery", "Video commerce"],
+  },
+  {
+    name: "Custom HR portals",
+    eyebrow: "Client systems",
+    desc: "Tailored HR portals for teams that need attendance, payroll workflows, approvals, reports, and admin control.",
+    points: ["Employee records", "Approvals", "Reports"],
+  },
+  {
+    name: "Private mail server packages",
+    eyebrow: "Infrastructure",
+    desc: "Domain email systems for companies that want admin control, secure access, spam protection, backups, and ownership.",
+    points: ["Domain email", "Admin control", "Backups"],
+  },
 ];
 
 const aptelCategories = [
@@ -121,7 +157,44 @@ function ServiceCard({ service }) {
   );
 }
 
+function ProductCard({ product }) {
+  const content = (
+    <>
+      <div className="product-card-head">
+        {product.logo ? (
+          <div className="product-logo-panel">
+            <img src={product.logo} alt={product.logoAlt} />
+          </div>
+        ) : (
+          <div className="product-letter-mark">{product.name.slice(0, 1)}</div>
+        )}
+        <span>{product.eyebrow}</span>
+      </div>
+      <h3>{product.name}</h3>
+      <p>{product.desc}</p>
+      <div className="product-points">
+        {product.points.map((point) => (
+          <span key={point}>{point}</span>
+        ))}
+      </div>
+      {product.url ? <strong className="product-url">{product.url.replace("https://", "")}</strong> : null}
+    </>
+  );
+
+  if (product.url) {
+    return (
+      <a className="product-card featured-product-card" href={product.url} target="_blank" rel="noreferrer">
+        {content}
+      </a>
+    );
+  }
+
+  return <article className="product-card">{content}</article>;
+}
+
 export default function MainSite() {
+  const [isReviewOpen, setIsReviewOpen] = useState(false);
+
   return (
     <main className="site-shell">
       <TopNav />
@@ -178,6 +251,7 @@ export default function MainSite() {
             <div className="visual-strip">
               <span>Mail servers</span>
               <span>HR systems</span>
+              <span>PeopleOpsCore</span>
               <span>Private AI</span>
               <span>AptelNow</span>
             </div>
@@ -260,41 +334,77 @@ export default function MainSite() {
 
       <section id="proof" className="proof-section">
         <div className="proof-card">
-          <SectionHeader
-            kicker="Trusted delivery"
-            title="One Australia client. Real business running successfully."
-            light
-          >
-            We do not just make demo screens. We help businesses launch,
-            operate, and improve real systems after deployment.
-          </SectionHeader>
+          <div className="proof-copy">
+            <SectionHeader
+              kicker="Client appreciation"
+              title="Real support. Real HR delivery. Real words from a client."
+              light
+            >
+              KSBAA delivered an HR application for Smavy Academy and supported
+              the team through go-live, onboarding, and post-deployment.
+            </SectionHeader>
 
-          <div className="proof-stats">
-            <div>
-              <strong>Live</strong>
-              <span>Client operations</span>
-            </div>
-            <div>
-              <strong>End to end</strong>
-              <span>Design to deployment</span>
-            </div>
-            <div>
-              <strong>Secure</strong>
-              <span>Data first approach</span>
+            <div className="proof-stats">
+              <div>
+                <strong>Live</strong>
+                <span>Client operations</span>
+              </div>
+              <div>
+                <strong>End to end</strong>
+                <span>Design to deployment</span>
+              </div>
+              <div>
+                <strong>Support</strong>
+                <span>Go-live and onboarding</span>
+              </div>
             </div>
           </div>
+
+          <button
+            className="client-review-preview"
+            type="button"
+            onClick={() => setIsReviewOpen(true)}
+            aria-label="Open client appreciation letter full screen"
+          >
+            <span className="review-preview-badge">Tap to read full letter</span>
+            <img
+              src={clientReviewImage}
+              alt="Client appreciation email for KSBAA HR application delivery and support"
+            />
+          </button>
         </div>
       </section>
 
+      {isReviewOpen ? (
+        <div
+          className="review-lightbox"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Client appreciation letter"
+          onClick={() => setIsReviewOpen(false)}
+        >
+          <button
+            className="review-lightbox-close"
+            type="button"
+            onClick={() => setIsReviewOpen(false)}
+            aria-label="Close client appreciation letter"
+          >
+            Close
+          </button>
+          <img
+            src={clientReviewImage}
+            alt="Full client appreciation email for KSBAA HR application delivery and support"
+            onClick={(event) => event.stopPropagation()}
+          />
+        </div>
+      ) : null}
+
       <section id="products" className="content-section split-section">
         <div>
-          <SectionHeader kicker="Products" title="Ready systems and custom builds." />
+          <SectionHeader kicker="Products" title="Own SaaS products and custom builds." />
           <div className="product-list">
-            {products.map((item) => (
-              <div key={item} className="product-item">
-                <span></span>
-                <p>{item}</p>
-              </div>
+            {products.map((product) => (
+              <ProductCard key={product.name} product={product} />
             ))}
           </div>
         </div>
@@ -363,6 +473,10 @@ export default function MainSite() {
           <a href="https://www.aptelnow.com">
             <span>Platform</span>
             <strong>aptelnow.com</strong>
+          </a>
+          <a href="https://peopleopscore.com">
+            <span>HR SaaS</span>
+            <strong>peopleopscore.com</strong>
           </a>
         </div>
       </section>
