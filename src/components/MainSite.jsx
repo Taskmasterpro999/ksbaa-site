@@ -107,6 +107,36 @@ const process = [
 
 const socialLinks = [
   {
+    label: "LinkedIn",
+    value: "Himabindu Karumanchi",
+    href: "https://www.linkedin.com/in/himabindu-karumanchi-56b86b367",
+    icon: "linkedin",
+  },
+  {
+    label: "Facebook",
+    value: "KSBAA on Facebook",
+    href: "https://www.facebook.com/share/1BkrnxdZff/",
+    icon: "facebook",
+  },
+  {
+    label: "Instagram",
+    value: "taskmasterpro99",
+    href: "https://www.instagram.com/taskmasterpro99",
+    icon: "instagram",
+  },
+  {
+    label: "YouTube",
+    value: "@Taskmasterpro-l1s6q",
+    href: "https://www.youtube.com/@Taskmasterpro-l1s6q",
+    icon: "youtube",
+  },
+  {
+    label: "Threads",
+    value: "taskmasterpro99",
+    href: "https://www.threads.net/@taskmasterpro99",
+    icon: "threads",
+  },
+  {
     label: "X",
     value: "@taskmaster999",
     href: "https://x.com/taskmaster999",
@@ -117,24 +147,6 @@ const socialLinks = [
     value: "+91 79952 46347",
     href: "https://wa.me/917995246347",
     icon: "whatsapp",
-  },
-  {
-    label: "Email",
-    value: "taskmasterpro99@gmail.com",
-    href: "mailto:taskmasterpro99@gmail.com",
-    icon: "mail",
-  },
-  {
-    label: "PeopleOpsCore",
-    value: "peopleopscore.com",
-    href: "https://peopleopscore.com",
-    icon: "link",
-  },
-  {
-    label: "AptelNow",
-    value: "aptelnow.com",
-    href: "https://www.aptelnow.com",
-    icon: "link",
   },
 ];
 
@@ -226,6 +238,46 @@ function ProductCard({ product }) {
 }
 
 function SocialIcon({ type }) {
+  if (type === "linkedin") {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M5.1 8.8H1.8V22h3.3V8.8ZM5.4 4.7A1.9 1.9 0 1 0 1.5 4.7a1.9 1.9 0 0 0 3.9 0ZM22.5 14.4c0-3.6-1.9-5.9-5-5.9a4.2 4.2 0 0 0-3.8 2.1V8.8h-3.2V22h3.3v-6.6c0-1.9.9-3.6 2.8-3.6 1.8 0 2.6 1.2 2.6 3.4V22h3.3v-7.6Z" />
+      </svg>
+    );
+  }
+
+  if (type === "facebook") {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M14.1 22v-8h2.7l.5-3.3h-3.2V8.6c0-.9.4-1.7 1.8-1.7h1.5V4.1c-.3 0-1.3-.2-2.5-.2-2.6 0-4.3 1.6-4.3 4.4v2.4H7.7V14h2.9v8h3.5Z" />
+      </svg>
+    );
+  }
+
+  if (type === "instagram") {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M7.2 2h9.6A5.2 5.2 0 0 1 22 7.2v9.6a5.2 5.2 0 0 1-5.2 5.2H7.2A5.2 5.2 0 0 1 2 16.8V7.2A5.2 5.2 0 0 1 7.2 2Zm9.6 18A3.2 3.2 0 0 0 20 16.8V7.2A3.2 3.2 0 0 0 16.8 4H7.2A3.2 3.2 0 0 0 4 7.2v9.6A3.2 3.2 0 0 0 7.2 20h9.6ZM12 7.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8Zm0 7.8a2.9 2.9 0 1 0 0-5.8 2.9 2.9 0 0 0 0 5.8Zm5.2-8.7a1.1 1.1 0 1 1-2.2 0 1.1 1.1 0 0 1 2.2 0Z" />
+      </svg>
+    );
+  }
+
+  if (type === "youtube") {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M21.6 7.2a3 3 0 0 0-2.1-2.1C17.6 4.6 12 4.6 12 4.6s-5.6 0-7.5.5a3 3 0 0 0-2.1 2.1A31 31 0 0 0 2 12a31 31 0 0 0 .4 4.8 3 3 0 0 0 2.1 2.1c1.9.5 7.5.5 7.5.5s5.6 0 7.5-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 22 12a31 31 0 0 0-.4-4.8ZM10 15.5v-7l6 3.5-6 3.5Z" />
+      </svg>
+    );
+  }
+
+  if (type === "threads") {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12.3 2C6.4 2 3 5.8 3 12.1 3 18.4 6.5 22 12.4 22c4.8 0 7.7-2.7 7.7-6.2 0-2.7-1.6-4.6-4.5-5.4-.3-2.8-1.9-4.4-4.7-4.4-2 0-3.6.9-4.6 2.5l2.1 1.4c.6-1 1.4-1.6 2.5-1.6 1.3 0 2 .7 2.2 1.8h-.9c-3.1 0-5.1 1.6-5.1 4 0 2.2 1.8 3.8 4.3 3.8 2.6 0 4.3-1.5 4.3-4.1v-.4c1.3.6 2 1.5 2 2.9 0 2.1-1.8 3.7-5.2 3.7-4.5 0-6.9-2.8-6.9-7.4 0-4.8 2.3-7.6 6.7-7.6 3.1 0 5 1.4 6 4.2l2.4-.8C19.5 4.6 16.7 2 12.3 2Zm.9 11.6c0 1.2-.7 1.9-1.9 1.9-1.1 0-1.8-.6-1.8-1.5 0-1 .9-1.6 2.5-1.6h1.2v1.2Z" />
+      </svg>
+    );
+  }
+
   if (type === "x") {
     return (
       <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -259,18 +311,28 @@ function SocialIcon({ type }) {
 
 function SocialLinks({ compact = false }) {
   return (
-    <div className={`social-links ${compact ? "social-links-compact" : ""}`}>
-      {socialLinks.map((link) => (
-        <a key={link.label} href={link.href} target={link.href.startsWith("http") ? "_blank" : undefined} rel={link.href.startsWith("http") ? "noreferrer" : undefined} aria-label={`Open ${link.label}`}>
-          <span className="social-icon">
-            <SocialIcon type={link.icon} />
-          </span>
-          <span>
-            <small>{link.label}</small>
-            <strong>{link.value}</strong>
-          </span>
-        </a>
-      ))}
+    <div className={`social-block ${compact ? "social-block-compact" : ""}`}>
+      {compact ? null : <h3>Follow us</h3>}
+      <div className={`social-links ${compact ? "social-links-compact" : ""}`}>
+        {socialLinks.map((link) => (
+          <a
+            key={link.label}
+            className={`social-link social-link-${link.icon}`}
+            href={link.href}
+            target="_blank"
+            rel="noreferrer"
+            aria-label={`Open ${link.label}`}
+          >
+            <span className="social-icon">
+              <SocialIcon type={link.icon} />
+            </span>
+            <span>
+              <small>{link.label}</small>
+              <strong>{link.value}</strong>
+            </span>
+          </a>
+        ))}
+      </div>
     </div>
   );
 }
