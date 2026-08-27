@@ -105,6 +105,39 @@ const process = [
   ["03", "Operate", "We support launch, migrations, improvements, monitoring, and real user feedback."],
 ];
 
+const socialLinks = [
+  {
+    label: "X",
+    value: "@taskmaster999",
+    href: "https://x.com/taskmaster999",
+    icon: "x",
+  },
+  {
+    label: "WhatsApp",
+    value: "+91 79952 46347",
+    href: "https://wa.me/917995246347",
+    icon: "whatsapp",
+  },
+  {
+    label: "Email",
+    value: "taskmasterpro99@gmail.com",
+    href: "mailto:taskmasterpro99@gmail.com",
+    icon: "mail",
+  },
+  {
+    label: "PeopleOpsCore",
+    value: "peopleopscore.com",
+    href: "https://peopleopscore.com",
+    icon: "link",
+  },
+  {
+    label: "AptelNow",
+    value: "aptelnow.com",
+    href: "https://www.aptelnow.com",
+    icon: "link",
+  },
+];
+
 function TopNav() {
   return (
     <header className="site-nav">
@@ -190,6 +223,56 @@ function ProductCard({ product }) {
   }
 
   return <article className="product-card">{content}</article>;
+}
+
+function SocialIcon({ type }) {
+  if (type === "x") {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M14.6 10.2 22.4 1h-1.9l-6.8 8-5.4-8H2l8.2 12.1L2 23h1.9l7.1-8.4 5.7 8.4H23l-8.4-12.8Zm-2.5 2.9-.8-1.2L4.7 2.5h2.7l5.3 7.7.8 1.2 6.9 10.1h-2.7l-5.6-8.4Z" />
+      </svg>
+    );
+  }
+
+  if (type === "whatsapp") {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 2a9.9 9.9 0 0 0-8.5 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm0 18.2a8.1 8.1 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-2-1.2 7.4 7.4 0 0 1-1.4-1.8c-.1-.2 0-.4.1-.5l.4-.5c.1-.2.2-.3.3-.5a.5.5 0 0 0 0-.5c-.1-.1-.6-1.4-.8-1.9-.2-.4-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 4.8 4.8 0 0 0 1 2.5 11 11 0 0 0 4.2 3.8c1.6.7 2.2.7 3 .6a2.5 2.5 0 0 0 1.7-1.2 2 2 0 0 0 .1-1.2c-.1-.1-.2-.1-.4-.2Z" />
+      </svg>
+    );
+  }
+
+  if (type === "mail") {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M4 5h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Zm8 7.4L4.4 7H4v.8l8 5.7 8-5.7V7h-.4L12 12.4Z" />
+      </svg>
+    );
+  }
+
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M10.6 13.4a1 1 0 0 1 0-1.4l3.8-3.8a3 3 0 0 1 4.2 4.2l-2.1 2.1a3 3 0 0 1-3.7.4 1 1 0 1 1 1-1.7 1 1 0 0 0 1.3-.1l2.1-2.1a1 1 0 1 0-1.4-1.4L12 13.4a1 1 0 0 1-1.4 0Zm2.8-2.8a1 1 0 0 1 0 1.4l-3.8 3.8a3 3 0 0 1-4.2-4.2l2.1-2.1a3 3 0 0 1 3.7-.4 1 1 0 1 1-1 1.7 1 1 0 0 0-1.3.1L6.8 13a1 1 0 1 0 1.4 1.4l3.8-3.8a1 1 0 0 1 1.4 0Z" />
+    </svg>
+  );
+}
+
+function SocialLinks({ compact = false }) {
+  return (
+    <div className={`social-links ${compact ? "social-links-compact" : ""}`}>
+      {socialLinks.map((link) => (
+        <a key={link.label} href={link.href} target={link.href.startsWith("http") ? "_blank" : undefined} rel={link.href.startsWith("http") ? "noreferrer" : undefined} aria-label={`Open ${link.label}`}>
+          <span className="social-icon">
+            <SocialIcon type={link.icon} />
+          </span>
+          <span>
+            <small>{link.label}</small>
+            <strong>{link.value}</strong>
+          </span>
+        </a>
+      ))}
+    </div>
+  );
 }
 
 export default function MainSite() {
@@ -460,30 +543,13 @@ export default function MainSite() {
           </SectionHeader>
         </div>
 
-        <div className="contact-grid">
-          <a href="mailto:taskmasterpro99@gmail.com">
-            <span>Email</span>
-            <strong>taskmasterpro99@gmail.com</strong>
-          </a>
-          <a href="https://wa.me/917995246347">
-            <span>WhatsApp</span>
-            <strong>+91 79952 46347</strong>
-          </a>
-
-          <a href="https://www.aptelnow.com">
-            <span>Platform</span>
-            <strong>aptelnow.com</strong>
-          </a>
-          <a href="https://peopleopscore.com">
-            <span>HR SaaS</span>
-            <strong>peopleopscore.com</strong>
-          </a>
-        </div>
+        <SocialLinks />
       </section>
 
       <footer className="site-footer">
         <span>Copyright {new Date().getFullYear()} K.S.B.A.A Gaming & IT Solutions Pvt Ltd</span>
         <span>Mail servers, HR systems, SaaS products, private AI, and end to end apps.</span>
+        <SocialLinks compact />
         <a href="/privacy-policy/">Privacy Policy</a>
       </footer>
     </main>
