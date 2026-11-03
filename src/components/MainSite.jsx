@@ -75,14 +75,16 @@ export default function MainSite() {
         <div className="hero-watermark" aria-hidden="true">KSBAA</div>
         <Reveal className="hero-copy">
           <p className="eyebrow">Technology, built with intent.</p>
-          <h1>We engineer<br /><span>what’s next.</span></h1>
-          <p className="hero-intro">KSBAA Gaming & IT Solutions builds ambitious digital products, private systems and intelligent platforms for businesses ready to move forward.</p>
-          <a className="text-link" href="#expertise">Explore our work <Arrow down /></a>
+          <div className="hero-heading-row">
+            <h1>We engineer<br /><span>what’s next.</span></h1>
+            <div className="hero-support">
+              <p className="hero-intro">KSBAA Gaming & IT Solutions builds ambitious digital products, private systems and intelligent platforms for businesses ready to move forward.</p>
+              <a className="text-link" href="#expertise">Explore our work <Arrow down /></a>
+            </div>
+          </div>
         </Reveal>
 
         <div className="hero-art" aria-label="KSBAA brand film">
-          <div className="orbit orbit-one" />
-          <div className="orbit orbit-two" />
           <video
             className="hero-video"
             autoPlay
