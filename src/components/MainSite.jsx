@@ -150,7 +150,14 @@ export default function MainSite() {
         <Reveal as="article" className="venture-card people-card">
           <div className="venture-meta"><span>02</span><span>People platform</span></div>
           <div className="people-identity">
-            <img src={peopleOpsCoreLogo} alt="PeopleOpsCore" />
+            <img className="people-desktop-logo" src={peopleOpsCoreLogo} alt="PeopleOpsCore" />
+            <div className="people-mobile-lockup" aria-label="PeopleOpsCore">
+              <span className="people-mobile-symbol" aria-hidden="true">
+                <img src={peopleOpsCoreLogo} alt="" />
+              </span>
+              <strong>PeopleOps<span>Core</span></strong>
+              <small>People operations, made simpler.</small>
+            </div>
           </div>
           <div className="venture-copy">
             <p className="venture-label">KSBAA product</p>

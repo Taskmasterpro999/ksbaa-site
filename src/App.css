@@ -135,6 +135,7 @@ button { color: inherit; }
 .people-card { grid-template-columns: 80px 1.1fr .9fr; color: #0b0b0b; background: #e2e2dc; }
 .people-identity { display: grid; grid-column: 2; min-width: 0; place-items: center; overflow: hidden; padding: clamp(48px, 8vw, 120px); background: #fff; }
 .people-identity img { display: block; width: 100%; max-width: 720px; height: auto; object-fit: contain; mix-blend-mode: multiply; }
+.people-mobile-lockup { display: none; }
 .people-card .venture-copy p { color: #555; }
 
 .proof { display: grid; grid-template-columns: 1fr 1fr; gap: 7vw; align-items: center; padding: 140px clamp(24px, 8vw, 128px); background: #fff; }
@@ -236,8 +237,14 @@ footer a { text-decoration: none; }
   .jobs-visual { width: calc(100% - 16px); margin-bottom: 40px; padding: 20px; transform: rotate(1.5deg); }
   .jobs-top { padding-bottom: 30px; }
   .jobs-ticker { margin: 20px -20px -20px; }
-  .people-identity { grid-column: 2; min-height: 220px; padding: 42px 22px; }
-  .people-identity img { width: min(100%, 520px); }
+  .people-identity { grid-column: 2; min-height: 360px; padding: 42px 22px; }
+  .people-desktop-logo { display: none !important; }
+  .people-mobile-lockup { display: flex; width: 100%; align-items: center; flex-direction: column; text-align: center; }
+  .people-mobile-symbol { display: block; width: 142px; height: 132px; overflow: hidden; }
+  .people-mobile-symbol img { width: auto; max-width: none; height: 132px; transform: translateX(-1px); mix-blend-mode: multiply; }
+  .people-mobile-lockup strong { margin-top: 18px; font: 800 clamp(29px, 9.5vw, 43px)/1 var(--lexend); letter-spacing: -.055em; white-space: nowrap; }
+  .people-mobile-lockup strong span { color: #09a9e5; }
+  .people-mobile-lockup small { margin-top: 13px; color: #667080; font-size: 10px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
   .proof { padding-inline: 24px; }
   .contact { padding-inline: 24px; }
   .contact-bottom { align-items: start; flex-direction: column; }
