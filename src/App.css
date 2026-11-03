@@ -207,7 +207,11 @@ footer a { text-decoration: none; }
   .aptel-card { grid-template-columns: 55px 1fr; }
   .jobs-visual { grid-column: 2; width: 92%; margin: 0 0 60px; }
   .people-card { grid-template-columns: 55px 1fr; }
-  .people-identity { grid-column: 2; min-height: 380px; }
+  .people-identity { grid-column: 2; min-height: 220px; padding: 42px 22px; }
+  .people-desktop-logo { display: none !important; }
+  .people-mobile-lockup { display: flex; width: 100%; align-items: center; flex-direction: column; text-align: center; }
+  .people-mobile-lockup strong { font: 800 clamp(29px, 7vw, 43px)/1 var(--lexend); letter-spacing: -.055em; white-space: nowrap; }
+  .people-mobile-lockup strong span { color: #09a9e5; }
   .people-card .venture-copy { grid-column: 2; }
   .proof { grid-template-columns: 1fr; }
 }
@@ -237,11 +241,6 @@ footer a { text-decoration: none; }
   .jobs-visual { width: calc(100% - 16px); margin-bottom: 40px; padding: 20px; transform: rotate(1.5deg); }
   .jobs-top { padding-bottom: 30px; }
   .jobs-ticker { margin: 20px -20px -20px; }
-  .people-identity { grid-column: 2; min-height: 220px; padding: 42px 22px; }
-  .people-desktop-logo { display: none !important; }
-  .people-mobile-lockup { display: flex; width: 100%; align-items: center; flex-direction: column; text-align: center; }
-  .people-mobile-lockup strong { font: 800 clamp(29px, 9.5vw, 43px)/1 var(--lexend); letter-spacing: -.055em; white-space: nowrap; }
-  .people-mobile-lockup strong span { color: #09a9e5; }
   .proof { padding-inline: 24px; }
   .contact { padding-inline: 24px; }
   .contact-bottom { align-items: start; flex-direction: column; }
