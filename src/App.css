@@ -133,8 +133,8 @@ button { color: inherit; }
 .job-row strong { font: 800 clamp(16px, 1.7vw, 25px)/1 var(--mont); }
 .jobs-ticker { margin: 22px -34px -34px; padding: 14px 20px; overflow: hidden; color: #fff; background: #111; font-size: 9px; letter-spacing: .07em; text-transform: uppercase; white-space: nowrap; }
 .people-card { grid-template-columns: 80px 1.1fr .9fr; color: #0b0b0b; background: #e2e2dc; }
-.people-identity { display: grid; place-items: center; padding: 8vw; background: #fff; }
-.people-identity img { max-width: 100%; mix-blend-mode: multiply; }
+.people-identity { display: grid; grid-column: 2; min-width: 0; place-items: center; overflow: hidden; padding: clamp(48px, 8vw, 120px); background: #fff; }
+.people-identity img { display: block; width: 100%; max-width: 720px; height: auto; object-fit: contain; mix-blend-mode: multiply; }
 .people-card .venture-copy p { color: #555; }
 
 .proof { display: grid; grid-template-columns: 1fr 1fr; gap: 7vw; align-items: center; padding: 140px clamp(24px, 8vw, 128px); background: #fff; }
@@ -206,7 +206,7 @@ footer a { text-decoration: none; }
   .aptel-card { grid-template-columns: 55px 1fr; }
   .jobs-visual { grid-column: 2; width: 92%; margin: 0 0 60px; }
   .people-card { grid-template-columns: 55px 1fr; }
-  .people-identity { min-height: 380px; }
+  .people-identity { grid-column: 2; min-height: 380px; }
   .people-card .venture-copy { grid-column: 2; }
   .proof { grid-template-columns: 1fr; }
 }
@@ -236,7 +236,8 @@ footer a { text-decoration: none; }
   .jobs-visual { width: calc(100% - 16px); margin-bottom: 40px; padding: 20px; transform: rotate(1.5deg); }
   .jobs-top { padding-bottom: 30px; }
   .jobs-ticker { margin: 20px -20px -20px; }
-  .people-identity { min-height: 260px; padding: 50px 30px; }
+  .people-identity { grid-column: 2; min-height: 220px; padding: 42px 22px; }
+  .people-identity img { width: min(100%, 520px); }
   .proof { padding-inline: 24px; }
   .contact { padding-inline: 24px; }
   .contact-bottom { align-items: start; flex-direction: column; }
