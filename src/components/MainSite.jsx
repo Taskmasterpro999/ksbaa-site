@@ -1,619 +1,205 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import clientReviewImage from "../../Client Review.png";
 import peopleOpsCoreLogo from "../../poc-logo.png";
 
-const navItems = [
-  { id: "services", label: "Services" },
-  { id: "aptelnow", label: "AptelNow" },
-  { id: "proof", label: "Proof" },
-  { id: "products", label: "Products" },
-  { id: "ai", label: "AI" },
-  { id: "contact", label: "Contact" },
-];
-
 const services = [
-  {
-    title: "Mail Server Builds",
-    eyebrow: "Self owned",
-    icon: "Mail",
-    desc: "Business email on your own domain with admin control, spam protection, backups, logs, and secure access.",
-    points: ["SMTP, IMAP, webmail", "Domain and DNS setup", "User, quota, and policy control"],
-  },
-  {
-    title: "HR Systems",
-    eyebrow: "Operations",
-    icon: "HR",
-    desc: "Employee management tools for attendance, payroll workflows, documents, approvals, and reporting.",
-    points: ["Employee records", "Leave and attendance", "Role based dashboards"],
-  },
-  {
-    title: "End to End Applications",
-    eyebrow: "Custom build",
-    icon: "App",
-    desc: "From idea and UI to backend, database, deployment, and support. We build complete systems that businesses can run daily.",
-    points: ["Web and mobile friendly", "Secure backend APIs", "Cloud or private hosting"],
-  },
-  {
-    title: "Own SaaS Products",
-    eyebrow: "No lock-in",
-    icon: "SaaS",
-    desc: "Do not depend forever on subscriptions. Build your own SaaS platform with your workflows, your branding, and your data.",
-    points: ["Subscription style product", "Admin and tenant control", "Scalable product architecture"],
-  },
+  ["01", "Product engineering", "From the first screen to production infrastructure, we turn complex workflows into calm, dependable software."],
+  ["02", "Business platforms", "HR systems, operations portals and subscription products shaped around the way your team actually works."],
+  ["03", "Private AI", "Search, assistants and automations grounded in your company knowledge, with ownership and control designed in."],
+  ["04", "Digital infrastructure", "Private mail servers, secure deployment, monitoring and the technical foundation that keeps business moving."],
 ];
 
-const products = [
-  {
-    name: "PeopleOpsCore",
-    eyebrow: "Own SaaS product",
-    url: "https://peopleopscore.com",
-    logo: peopleOpsCoreLogo,
-    logoAlt: "PeopleOpsCore logo",
-    desc: "PeopleOpsCore is KSBAA's own multi-tenant HR SaaS for companies that want a monthly subscription HR system without building from scratch.",
-    points: [
-      "Onboarding",
-      "Attendance",
-      "Notice period",
-      "Documents",
-      "Trainings",
-      "Reviews",
-      "Logs",
-      "Role based access",
-    ],
-  },
-  {
-    name: "AptelNow.com",
-    eyebrow: "KSBAA platform",
-    url: "https://aptelnow.com",
-    desc: "Telugu news, education, business, entertainment, local games, weather, government jobs, weekly astrology, dummy trading, trading basics, and pre owned item videos.",
-    points: ["Telugu media", "Local discovery", "Video commerce"],
-  },
-  {
-    name: "Custom HR portals",
-    eyebrow: "Client systems",
-    desc: "Tailored HR portals for teams that need attendance, payroll workflows, approvals, reports, and admin control.",
-    points: ["Employee records", "Approvals", "Reports"],
-  },
-  {
-    name: "Private mail server packages",
-    eyebrow: "Infrastructure",
-    desc: "Domain email systems for companies that want admin control, secure access, spam protection, backups, and ownership.",
-    points: ["Domain email", "Admin control", "Backups"],
-  },
-];
-
-const aptelCategories = [
-  ["News", "Telugu news"],
-  ["Edu", "Education"],
-  ["Biz", "Business"],
-  ["Fun", "Comedy"],
-  ["Show", "Entertainment"],
-  ["Game", "Local games"],
-  ["Cook", "Cooking"],
-  ["Sport", "Sports"],
-  ["Sky", "Weather"],
-  ["Jobs", "AP & Telangana govt jobs"],
-  ["Star", "Weekly astrology"],
-  ["Trade", "Dummy trading"],
-  ["Learn", "Trading basics unlock"],
-  ["Sell", "Pre owned item videos"],
-];
-
-const process = [
-  ["01", "Understand", "We study your workflow, users, reports, and data before writing code."],
-  ["02", "Build", "We design the UI, backend, database, security, and deployment as one working product."],
-  ["03", "Operate", "We support launch, migrations, improvements, monitoring, and real user feedback."],
-];
+const capabilities = ["Web applications", "SaaS products", "HR technology", "Private AI", "Mail infrastructure", "Product design"];
 
 const socialLinks = [
-  {
-    label: "LinkedIn",
-    value: "Himabindu Karumanchi",
-    href: "https://www.linkedin.com/in/himabindu-karumanchi-56b86b367",
-    icon: "linkedin",
-  },
-  {
-    label: "Facebook",
-    value: "KSBAA on Facebook",
-    href: "https://www.facebook.com/share/1BkrnxdZff/",
-    icon: "facebook",
-  },
-  {
-    label: "Instagram",
-    value: "taskmasterpro99",
-    href: "https://www.instagram.com/taskmasterpro99",
-    icon: "instagram",
-  },
-  {
-    label: "YouTube",
-    value: "@Taskmasterpro-l1s6q",
-    href: "https://www.youtube.com/@Taskmasterpro-l1s6q",
-    icon: "youtube",
-  },
-  {
-    label: "Threads",
-    value: "taskmasterpro99",
-    href: "https://www.threads.net/@taskmasterpro99",
-    icon: "threads",
-  },
-  {
-    label: "X",
-    value: "@taskmaster999",
-    href: "https://x.com/taskmaster999",
-    icon: "x",
-  },
-  {
-    label: "WhatsApp",
-    value: "+91 79952 46347",
-    href: "https://wa.me/917995246347",
-    icon: "whatsapp",
-  },
+  ["LinkedIn", "https://www.linkedin.com/in/himabindu-karumanchi-56b86b367"],
+  ["Instagram", "https://www.instagram.com/taskmasterpro99"],
+  ["YouTube", "https://www.youtube.com/@Taskmasterpro-l1s6q"],
+  ["X", "https://x.com/taskmaster999"],
 ];
 
-function TopNav() {
-  return (
-    <header className="site-nav">
-      <a className="brand" href="#home" aria-label="KSBAA home">
-        <span className="brand-mark">K</span>
-        <span>
-          <strong>K.S.B.A.A</strong>
-          <small>Gaming & IT Solutions Pvt Ltd</small>
-        </span>
-      </a>
+function Arrow({ down = false }) {
+  return <span aria-hidden="true">{down ? "↓" : "↗"}</span>;
+}
 
-      <nav className="nav-links" aria-label="Primary navigation">
-        {navItems.map((item) => (
-          <a key={item.id} href={`#${item.id}`}>
-            {item.label}
-          </a>
-        ))}
+function Reveal({ as = "div", className = "", children, ...props }) {
+  return React.createElement(as, { className: `reveal ${className}`, ...props }, children);
+}
+
+function Header() {
+  const [open, setOpen] = useState(false);
+  return (
+    <header className="topbar">
+      <a className="wordmark" href="#home" aria-label="KSBAA home">
+        <span className="wordmark-k">K</span>
+        <span><strong>KSBAA</strong><small>Gaming & IT Solutions</small></span>
+      </a>
+      <button className="menu-button" type="button" onClick={() => setOpen((value) => !value)} aria-expanded={open} aria-controls="primary-nav">
+        {open ? "Close" : "Menu"}
+      </button>
+      <nav id="primary-nav" className={open ? "nav-open" : ""} aria-label="Primary navigation">
+        <a href="#expertise" onClick={() => setOpen(false)}>Expertise</a>
+        <a href="#ventures" onClick={() => setOpen(false)}>Ventures</a>
+        <a href="#about" onClick={() => setOpen(false)}>About</a>
+        <a className="nav-cta" href="#contact" onClick={() => setOpen(false)}>Start a project <Arrow /></a>
       </nav>
     </header>
   );
 }
 
-function SectionHeader({ kicker, title, children, light = false }) {
-  return (
-    <div className={`section-header ${light ? "section-header-light" : ""}`}>
-      <span>{kicker}</span>
-      <h2>{title}</h2>
-      {children ? <p>{children}</p> : null}
-    </div>
-  );
-}
-
-function ServiceCard({ service }) {
-  return (
-    <article className="service-card">
-      <div className="service-card-head">
-        <div className="service-icon">{service.icon}</div>
-        <div className="card-topline">
-          <span>{service.eyebrow}</span>
-        </div>
-      </div>
-      <h3>{service.title}</h3>
-      <p>{service.desc}</p>
-      <ul>
-        {service.points.map((point) => (
-          <li key={point}>{point}</li>
-        ))}
-      </ul>
-    </article>
-  );
-}
-
-function ProductCard({ product }) {
-  const content = (
-    <>
-      <div className="product-card-head">
-        {product.logo ? (
-          <div className="product-logo-panel">
-            <img src={product.logo} alt={product.logoAlt} />
-          </div>
-        ) : (
-          <div className="product-letter-mark">{product.name.slice(0, 1)}</div>
-        )}
-        <span>{product.eyebrow}</span>
-      </div>
-      <h3>{product.name}</h3>
-      <p>{product.desc}</p>
-      <div className="product-points">
-        {product.points.map((point) => (
-          <span key={point}>{point}</span>
-        ))}
-      </div>
-      {product.url ? <strong className="product-url">{product.url.replace("https://", "")}</strong> : null}
-    </>
-  );
-
-  if (product.url) {
-    return (
-      <a className="product-card featured-product-card" href={product.url} target="_blank" rel="noreferrer">
-        {content}
-      </a>
-    );
-  }
-
-  return <article className="product-card">{content}</article>;
-}
-
-function SocialIcon({ type }) {
-  if (type === "linkedin") {
-    return (
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M5.1 8.8H1.8V22h3.3V8.8ZM5.4 4.7A1.9 1.9 0 1 0 1.5 4.7a1.9 1.9 0 0 0 3.9 0ZM22.5 14.4c0-3.6-1.9-5.9-5-5.9a4.2 4.2 0 0 0-3.8 2.1V8.8h-3.2V22h3.3v-6.6c0-1.9.9-3.6 2.8-3.6 1.8 0 2.6 1.2 2.6 3.4V22h3.3v-7.6Z" />
-      </svg>
-    );
-  }
-
-  if (type === "facebook") {
-    return (
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M14.1 22v-8h2.7l.5-3.3h-3.2V8.6c0-.9.4-1.7 1.8-1.7h1.5V4.1c-.3 0-1.3-.2-2.5-.2-2.6 0-4.3 1.6-4.3 4.4v2.4H7.7V14h2.9v8h3.5Z" />
-      </svg>
-    );
-  }
-
-  if (type === "instagram") {
-    return (
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M7.2 2h9.6A5.2 5.2 0 0 1 22 7.2v9.6a5.2 5.2 0 0 1-5.2 5.2H7.2A5.2 5.2 0 0 1 2 16.8V7.2A5.2 5.2 0 0 1 7.2 2Zm9.6 18A3.2 3.2 0 0 0 20 16.8V7.2A3.2 3.2 0 0 0 16.8 4H7.2A3.2 3.2 0 0 0 4 7.2v9.6A3.2 3.2 0 0 0 7.2 20h9.6ZM12 7.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8Zm0 7.8a2.9 2.9 0 1 0 0-5.8 2.9 2.9 0 0 0 0 5.8Zm5.2-8.7a1.1 1.1 0 1 1-2.2 0 1.1 1.1 0 0 1 2.2 0Z" />
-      </svg>
-    );
-  }
-
-  if (type === "youtube") {
-    return (
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M21.6 7.2a3 3 0 0 0-2.1-2.1C17.6 4.6 12 4.6 12 4.6s-5.6 0-7.5.5a3 3 0 0 0-2.1 2.1A31 31 0 0 0 2 12a31 31 0 0 0 .4 4.8 3 3 0 0 0 2.1 2.1c1.9.5 7.5.5 7.5.5s5.6 0 7.5-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 22 12a31 31 0 0 0-.4-4.8ZM10 15.5v-7l6 3.5-6 3.5Z" />
-      </svg>
-    );
-  }
-
-  if (type === "threads") {
-    return (
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M12.3 2C6.4 2 3 5.8 3 12.1 3 18.4 6.5 22 12.4 22c4.8 0 7.7-2.7 7.7-6.2 0-2.7-1.6-4.6-4.5-5.4-.3-2.8-1.9-4.4-4.7-4.4-2 0-3.6.9-4.6 2.5l2.1 1.4c.6-1 1.4-1.6 2.5-1.6 1.3 0 2 .7 2.2 1.8h-.9c-3.1 0-5.1 1.6-5.1 4 0 2.2 1.8 3.8 4.3 3.8 2.6 0 4.3-1.5 4.3-4.1v-.4c1.3.6 2 1.5 2 2.9 0 2.1-1.8 3.7-5.2 3.7-4.5 0-6.9-2.8-6.9-7.4 0-4.8 2.3-7.6 6.7-7.6 3.1 0 5 1.4 6 4.2l2.4-.8C19.5 4.6 16.7 2 12.3 2Zm.9 11.6c0 1.2-.7 1.9-1.9 1.9-1.1 0-1.8-.6-1.8-1.5 0-1 .9-1.6 2.5-1.6h1.2v1.2Z" />
-      </svg>
-    );
-  }
-
-  if (type === "x") {
-    return (
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M14.6 10.2 22.4 1h-1.9l-6.8 8-5.4-8H2l8.2 12.1L2 23h1.9l7.1-8.4 5.7 8.4H23l-8.4-12.8Zm-2.5 2.9-.8-1.2L4.7 2.5h2.7l5.3 7.7.8 1.2 6.9 10.1h-2.7l-5.6-8.4Z" />
-      </svg>
-    );
-  }
-
-  if (type === "whatsapp") {
-    return (
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M12 2a9.9 9.9 0 0 0-8.5 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm0 18.2a8.1 8.1 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-2-1.2 7.4 7.4 0 0 1-1.4-1.8c-.1-.2 0-.4.1-.5l.4-.5c.1-.2.2-.3.3-.5a.5.5 0 0 0 0-.5c-.1-.1-.6-1.4-.8-1.9-.2-.4-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 4.8 4.8 0 0 0 1 2.5 11 11 0 0 0 4.2 3.8c1.6.7 2.2.7 3 .6a2.5 2.5 0 0 0 1.7-1.2 2 2 0 0 0 .1-1.2c-.1-.1-.2-.1-.4-.2Z" />
-      </svg>
-    );
-  }
-
-  if (type === "mail") {
-    return (
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M4 5h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Zm8 7.4L4.4 7H4v.8l8 5.7 8-5.7V7h-.4L12 12.4Z" />
-      </svg>
-    );
-  }
-
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M10.6 13.4a1 1 0 0 1 0-1.4l3.8-3.8a3 3 0 0 1 4.2 4.2l-2.1 2.1a3 3 0 0 1-3.7.4 1 1 0 1 1 1-1.7 1 1 0 0 0 1.3-.1l2.1-2.1a1 1 0 1 0-1.4-1.4L12 13.4a1 1 0 0 1-1.4 0Zm2.8-2.8a1 1 0 0 1 0 1.4l-3.8 3.8a3 3 0 0 1-4.2-4.2l2.1-2.1a3 3 0 0 1 3.7-.4 1 1 0 1 1-1 1.7 1 1 0 0 0-1.3.1L6.8 13a1 1 0 1 0 1.4 1.4l3.8-3.8a1 1 0 0 1 1.4 0Z" />
-    </svg>
-  );
-}
-
-function SocialLinks({ compact = false }) {
-  return (
-    <div className={`social-block ${compact ? "social-block-compact" : ""}`}>
-      {compact ? null : <h3>Follow us</h3>}
-      <div className={`social-links ${compact ? "social-links-compact" : ""}`}>
-        {socialLinks.map((link) => (
-          <a
-            key={link.label}
-            className={`social-link social-link-${link.icon}`}
-            href={link.href}
-            target="_blank"
-            rel="noreferrer"
-            aria-label={`Open ${link.label}`}
-          >
-            <span className="social-icon">
-              <SocialIcon type={link.icon} />
-            </span>
-            <span>
-              <small>{link.label}</small>
-              <strong>{link.value}</strong>
-            </span>
-          </a>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 export default function MainSite() {
-  const [isReviewOpen, setIsReviewOpen] = useState(false);
+  const [reviewOpen, setReviewOpen] = useState(false);
+
+  useEffect(() => {
+    const updateScroll = () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      document.documentElement.style.setProperty("--scroll", max > 0 ? window.scrollY / max : 0);
+    };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => entry.isIntersecting && entry.target.classList.add("is-visible"));
+    }, { threshold: 0.12 });
+    document.querySelectorAll(".reveal").forEach((element) => observer.observe(element));
+    updateScroll();
+    window.addEventListener("scroll", updateScroll, { passive: true });
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", updateScroll);
+    };
+  }, []);
 
   return (
     <main className="site-shell">
-      <TopNav />
+      <Header />
 
-      <section id="home" className="hero-section">
-        <div className="hero-grid">
-          <div className="hero-copy">
-            <div className="hero-kicker">
-              <span>Private systems</span>
-              <span>Custom SaaS</span>
-              <span>AI on your data</span>
-            </div>
-            <div className="hero-title-lockup">
-              <span>Gaming & IT Solutions Pvt Ltd</span>
-              <h1>K.S.B.A.A</h1>
-              <strong>Build. Own. Scale.</strong>
-            </div>
-            <p>
-              We build serious business software, private AI systems, and our
-              own digital platforms like AptelNow.com for Telugu people across
-              AP, Telangana, and the world.
-            </p>
-            <div className="hero-actions">
-              <a className="primary-btn" href="#contact">
-                Start a project
-              </a>
-              <a className="secondary-btn" href="#services">
-                View strengths
-              </a>
-            </div>
-          </div>
+      <section id="home" className="hero">
+        <div className="hero-watermark" aria-hidden="true">KSBAA</div>
+        <Reveal className="hero-copy">
+          <p className="eyebrow">Technology, built with intent.</p>
+          <h1>We engineer<br /><span>what’s next.</span></h1>
+          <p className="hero-intro">KSBAA Gaming & IT Solutions builds ambitious digital products, private systems and intelligent platforms for businesses ready to move forward.</p>
+          <a className="text-link" href="#expertise">Explore our work <Arrow down /></a>
+        </Reveal>
 
-          <div className="hero-visual" aria-label="KSBAA premium technology showcase">
-            <div className="watch-stack">
-              <div className="smart-watch weather-watch">
-                <span>Systems live</span>
-                <strong>KSBAA</strong>
-                <small>Business software</small>
-              </div>
-              <div className="smart-watch time-watch">
-                <span>Australia</span>
-                <strong>Live</strong>
-                <small>Australia client</small>
-              </div>
-            </div>
-            <div className="phone-card">
-              <div className="phone-notch"></div>
-              <div className="phone-outline">K</div>
-              <p>
-                Purpose-driven innovation lives at the heart of meaningful
-                technological progress.
-              </p>
-            </div>
-            <div className="visual-strip">
-              <span>Mail servers</span>
-              <span>HR systems</span>
-              <span>PeopleOpsCore</span>
-              <span>Private AI</span>
-              <span>AptelNow</span>
-            </div>
-          </div>
+        <div className="hero-art" aria-label="KSBAA sculptural K monogram">
+          <div className="orbit orbit-one" />
+          <div className="orbit orbit-two" />
+          <img src="/ksbaa-hero-mark.png" alt="Sculptural black KSBAA K monogram" />
+          <div className="hero-note"><span>Independent technology company</span><strong>India / Global</strong></div>
         </div>
+
+        <a className="scroll-cue" href="#statement" aria-label="Scroll to discover"><span>Scroll</span><i /></a>
       </section>
 
-      <section id="services" className="content-section">
-        <SectionHeader
-          kicker="Core strengths"
-          title="Build what your business owns, controls, and grows."
-        >
-          KSBAA focuses on practical products that replace messy tools, reduce
-          subscription dependency, and keep business data under your control.
-        </SectionHeader>
+      <section id="statement" className="statement">
+        <Reveal>
+          <p className="section-index">01 / Perspective</p>
+          <h2>Technology should feel less like a tool—and more like an advantage.</h2>
+        </Reveal>
+        <Reveal className="statement-side">
+          <p>We combine product thinking, software engineering and long-term support to build systems people can trust every day.</p>
+          <a className="circle-link" href="#contact" aria-label="Talk to KSBAA"><Arrow /></a>
+        </Reveal>
+        <div className="drop-path" aria-hidden="true"><span /></div>
+      </section>
 
-        <div className="service-grid">
-          {services.map((service) => (
-            <ServiceCard key={service.title} service={service} />
+      <section id="expertise" className="expertise">
+        <Reveal className="section-heading">
+          <p className="section-index">02 / Expertise</p>
+          <h2>Built end to end.<br />Owned by you.</h2>
+          <p>Strategy to shipping, infrastructure to iteration. One focused technology partner across the full product lifecycle.</p>
+        </Reveal>
+
+        <div className="service-list">
+          {services.map(([number, title, copy]) => (
+            <Reveal as="article" className="service-row" key={number}>
+              <span>{number}</span><h3>{title}</h3><p>{copy}</p><Arrow />
+            </Reveal>
           ))}
         </div>
-      </section>
 
-      <section id="aptelnow" className="aptel-section">
-        <div className="aptel-glass">
-          <div className="aptel-copy">
-            <div className="aptel-title-lockup">
-              <span>KSBAA Platform</span>
-              <h2>
-                AptelNow<span>.com</span>
-              </h2>
-              <strong>Telugu media. Local updates. Video commerce.</strong>
-            </div>
-            <p>
-              AptelNow brings Telugu-focused YouTube embedded content and local
-              discovery into one place: news, education, business, comedy,
-              entertainment, cooking, sports, weather, AP and Telangana
-              government jobs, weekly astrology, local games, dummy trading,
-              and trading basics unlock.
-            </p>
-            <p>
-              We also added video based pre owned things selling, so people can
-              show products clearly through video and connect with local buyers
-              faster.
-            </p>
-            <a className="secondary-btn aptel-btn" href="https://aptelnow.com">
-              Visit AptelNow.com
-            </a>
-          </div>
-
-          <div className="aptel-showcase" aria-label="AptelNow content categories">
-            <div className="aptel-device-stage">
-              <div className="aptel-mini-device youtube-device">
-                <span>Embedded YouTube</span>
-                <strong>Telugu media</strong>
-                <small>Local updates</small>
-              </div>
-              <div className="aptel-mini-device commerce-device">
-                <span>Video commerce</span>
-                <strong>Pre owned</strong>
-                <small>Show and sell</small>
-              </div>
-              <div className="aptel-phone-device">
-                <div className="phone-notch"></div>
-                <strong>A</strong>
-                <p>News, jobs, learning, entertainment, and local commerce.</p>
-              </div>
-            </div>
-            <div className="aptel-categories">
-              {aptelCategories.map(([icon, category]) => (
-                <span key={category}>
-                  <i>{icon}</i>
-                  {category}
-                </span>
-              ))}
-            </div>
-          </div>
+        <div className="capability-marquee" aria-label="Capabilities">
+          <div>{[...capabilities, ...capabilities].map((item, index) => <span key={`${item}-${index}`}>{item}<i>✦</i></span>)}</div>
         </div>
       </section>
 
-      <section id="proof" className="proof-section">
-        <div className="proof-card">
-          <div className="proof-copy">
-            <SectionHeader
-              kicker="Client appreciation"
-              title="Real support. Real HR delivery. Real words from a client."
-              light
-            >
-              KSBAA delivered an HR application for Smavy Academy and supported
-              the team through go-live, onboarding, and post-deployment.
-            </SectionHeader>
+      <section id="ventures" className="ventures">
+        <Reveal className="ventures-title">
+          <p className="section-index">03 / Our ventures</p>
+          <h2>We don’t just build for others.<br />We build what we believe in.</h2>
+        </Reveal>
 
-            <div className="proof-stats">
-              <div>
-                <strong>Live</strong>
-                <span>Client operations</span>
-              </div>
-              <div>
-                <strong>End to end</strong>
-                <span>Design to deployment</span>
-              </div>
-              <div>
-                <strong>Support</strong>
-                <span>Go-live and onboarding</span>
-              </div>
-            </div>
+        <Reveal as="article" className="venture-card aptel-card">
+          <div className="venture-meta"><span>01</span><span>Jobs platform</span></div>
+          <div className="venture-copy">
+            <p className="venture-label">A KSBAA venture</p>
+            <h3>Aptel<span>Now</span></h3>
+            <p className="venture-tagline">The next opportunity,<br />closer to home.</p>
+            <p>A Telugu-first jobs destination focused on making opportunities easier to discover across Andhra Pradesh, Telangana and beyond.</p>
+            <a href="https://aptelnow.com" target="_blank" rel="noreferrer">Visit AptelNow <Arrow /></a>
           </div>
-
-          <button
-            className="client-review-preview"
-            type="button"
-            onClick={() => setIsReviewOpen(true)}
-            aria-label="Open client appreciation letter full screen"
-          >
-            <span className="review-preview-badge">Tap to read full letter</span>
-            <img
-              src={clientReviewImage}
-              alt="Client appreciation email for KSBAA HR application delivery and support"
-            />
-          </button>
-        </div>
-      </section>
-
-      {isReviewOpen ? (
-        <div
-          className="review-lightbox"
-          role="dialog"
-          aria-modal="true"
-          aria-label="Client appreciation letter"
-          onClick={() => setIsReviewOpen(false)}
-        >
-          <button
-            className="review-lightbox-close"
-            type="button"
-            onClick={() => setIsReviewOpen(false)}
-            aria-label="Close client appreciation letter"
-          >
-            Close
-          </button>
-          <img
-            src={clientReviewImage}
-            alt="Full client appreciation email for KSBAA HR application delivery and support"
-            onClick={(event) => event.stopPropagation()}
-          />
-        </div>
-      ) : null}
-
-      <section id="products" className="content-section split-section">
-        <div>
-          <SectionHeader kicker="Products" title="Own SaaS products and custom builds." />
-          <div className="product-list">
-            {products.map((product) => (
-              <ProductCard key={product.name} product={product} />
+          <div className="jobs-visual" aria-label="Stylized AptelNow jobs interface">
+            <div className="jobs-top"><strong>AN</strong><span>Find your next role</span></div>
+            <div className="job-search"><span>Search jobs, skills or company</span><b>→</b></div>
+            {["Government & Public Sector", "Technology & Product", "Operations & Support"].map((job, index) => (
+              <div className="job-row" key={job}><span>0{index + 1}</span><strong>{job}</strong><i>↗</i></div>
             ))}
+            <div className="jobs-ticker">Fresh opportunities • Telugu-first discovery • Career updates</div>
           </div>
-        </div>
+        </Reveal>
 
-        <div className="process-card">
-          <h3>How we build</h3>
-          {process.map(([num, title, desc]) => (
-            <div className="process-step" key={num}>
-              <span>{num}</span>
-              <div>
-                <strong>{title}</strong>
-                <p>{desc}</p>
-              </div>
-            </div>
-          ))}
+        <Reveal as="article" className="venture-card people-card">
+          <div className="venture-meta"><span>02</span><span>People platform</span></div>
+          <div className="people-identity">
+            <img src={peopleOpsCoreLogo} alt="PeopleOpsCore" />
+          </div>
+          <div className="venture-copy">
+            <p className="venture-label">KSBAA product</p>
+            <h3>PeopleOpsCore</h3>
+            <p>A multi-tenant HR platform for onboarding, attendance, documents, reviews and role-based operations.</p>
+            <a href="https://peopleopscore.com" target="_blank" rel="noreferrer">Discover the platform <Arrow /></a>
+          </div>
+        </Reveal>
+      </section>
+
+      <section id="about" className="proof">
+        <Reveal className="proof-copy">
+          <p className="section-index">04 / Proof in practice</p>
+          <h2>Software is only successful when people can rely on it.</h2>
+          <p>KSBAA delivered an HR application for Smavy Academy and supported the team through go-live, onboarding and post-deployment.</p>
+          <button type="button" onClick={() => setReviewOpen(true)}>Read client appreciation <Arrow /></button>
+        </Reveal>
+        <Reveal className="proof-image">
+          <button type="button" onClick={() => setReviewOpen(true)} aria-label="Open full client appreciation letter">
+            <img src={clientReviewImage} alt="Client appreciation for KSBAA HR application delivery" />
+          </button>
+          <span>Client note / Smavy Academy</span>
+        </Reveal>
+      </section>
+
+      <section id="contact" className="contact">
+        <Reveal>
+          <p className="section-index">05 / Let’s build</p>
+          <h2>Have an idea that<br />deserves to exist?</h2>
+          <a className="contact-email" href="mailto:taskmasterpro99@gmail.com">taskmasterpro99@gmail.com <Arrow /></a>
+        </Reveal>
+        <div className="contact-bottom">
+          <a href="https://wa.me/917995246347" target="_blank" rel="noreferrer">WhatsApp<br /><strong>+91 79952 46347</strong></a>
+          <div className="socials">{socialLinks.map(([label, url]) => <a href={url} target="_blank" rel="noreferrer" key={label}>{label}</a>)}</div>
         </div>
       </section>
 
-      <section id="ai" className="ai-section">
-        <div className="ai-copy">
-          <SectionHeader
-            kicker="Private AI"
-            title="AI models based on your own company data."
-            light
-          >
-            Build AI assistants for documents, support, internal search,
-            reporting, and workflow automation without exposing your knowledge
-            base to random tools.
-          </SectionHeader>
-          <a className="primary-btn light-btn" href="#contact">
-            Discuss AI project
-          </a>
-        </div>
-        <div className="ai-tiles">
-          <span>Document Q&A</span>
-          <span>Support bot</span>
-          <span>Report assistant</span>
-          <span>Internal search</span>
-          <span>Workflow automation</span>
-          <span>Data dashboards</span>
-        </div>
-      </section>
-
-      <section id="contact" className="contact-section">
-        <div>
-          <SectionHeader
-            kicker="Contact"
-            title="Let us build your next company system."
-            light
-          >
-            Tell us the workflow you want to replace, automate, or scale. KSBAA
-            can design, build, deploy, and support it end to end.
-          </SectionHeader>
-        </div>
-
-        <SocialLinks />
-      </section>
-
-      <footer className="site-footer">
-        <span>Copyright {new Date().getFullYear()} K.S.B.A.A Gaming & IT Solutions Pvt Ltd</span>
-        <span>Mail servers, HR systems, SaaS products, private AI, and end to end apps.</span>
-        <SocialLinks compact />
-        <a href="/privacy-policy/">Privacy Policy</a>
+      <footer>
+        <span>© {new Date().getFullYear()} KSBAA Gaming & IT Solutions Pvt Ltd</span>
+        <a href="/privacy-policy/">Privacy</a>
+        <a href="#home">Back to top ↑</a>
       </footer>
+
+      {reviewOpen && (
+        <div className="lightbox" role="dialog" aria-modal="true" aria-label="Client appreciation letter" onClick={() => setReviewOpen(false)}>
+          <button type="button" onClick={() => setReviewOpen(false)}>Close ×</button>
+          <img src={clientReviewImage} alt="Full client appreciation letter" onClick={(event) => event.stopPropagation()} />
+        </div>
+      )}
     </main>
   );
 }
