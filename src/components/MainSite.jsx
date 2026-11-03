@@ -80,10 +80,21 @@ export default function MainSite() {
           <a className="text-link" href="#expertise">Explore our work <Arrow down /></a>
         </Reveal>
 
-        <div className="hero-art" aria-label="KSBAA sculptural K monogram">
+        <div className="hero-art" aria-label="KSBAA brand film">
           <div className="orbit orbit-one" />
           <div className="orbit orbit-two" />
-          <img src="/ksbaa-hero-mark.png" alt="Sculptural black KSBAA K monogram" />
+          <video
+            className="hero-video"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            poster="/ksbaa-hero-mark.png"
+            aria-hidden="true"
+          >
+            <source src="/ksbaa-brand-hero-10s.mp4" type="video/mp4" />
+          </video>
           <div className="hero-note"><span>Independent technology company</span><strong>India / Global</strong></div>
         </div>
 

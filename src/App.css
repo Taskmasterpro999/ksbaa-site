@@ -69,7 +69,7 @@ button { color: inherit; }
 .hero-intro { width: min(500px, 52vw); margin: 48px 0 34px 13vw; color: #343430; font-size: clamp(16px, 1.4vw, 20px); line-height: 1.7; }
 .text-link { display: inline-flex; align-items: center; gap: 50px; margin-left: 13vw; padding-bottom: 8px; border-bottom: 1px solid; font-size: 13px; font-weight: 600; text-decoration: none; }
 .hero-art { position: absolute; z-index: -1; top: 16%; right: -1%; width: min(49vw, 740px); height: 72%; overflow: hidden; }
-.hero-art img { position: absolute; z-index: 2; top: 50%; left: 50%; width: 104%; max-width: none; transform: translate(-50%, -50%) translateY(calc(var(--scroll, 0) * 90px)); mix-blend-mode: multiply; filter: contrast(1.06); }
+.hero-video { position: absolute; z-index: 2; top: 50%; left: 50%; width: 108%; height: 108%; object-fit: contain; transform: translate(-50%, -50%) translateY(calc(var(--scroll, 0) * 54px)); mix-blend-mode: multiply; filter: contrast(1.04); }
 .orbit { position: absolute; z-index: 1; border: 1px solid rgba(9,9,9,.25); border-radius: 50%; }
 .orbit-one { inset: 10% -8% -4% 4%; animation: orbit 14s linear infinite; }
 .orbit-two { inset: 22% 5% 8% 16%; animation: orbit 9s linear reverse infinite; }
