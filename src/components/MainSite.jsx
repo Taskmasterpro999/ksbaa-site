@@ -152,11 +152,7 @@ export default function MainSite() {
           <div className="people-identity">
             <img className="people-desktop-logo" src={peopleOpsCoreLogo} alt="PeopleOpsCore" />
             <div className="people-mobile-lockup" aria-label="PeopleOpsCore">
-              <span className="people-mobile-symbol" aria-hidden="true">
-                <img src={peopleOpsCoreLogo} alt="" />
-              </span>
               <strong>PeopleOps<span>Core</span></strong>
-              <small>People operations, made simpler.</small>
             </div>
           </div>
           <div className="venture-copy">
