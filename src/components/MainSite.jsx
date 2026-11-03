@@ -149,12 +149,18 @@ export default function MainSite() {
 
         <Reveal as="article" className="venture-card people-card">
           <div className="venture-meta"><span>02</span><span>People platform</span></div>
-          <div className="people-identity">
+          <a
+            className="people-identity"
+            href="https://peopleopscore.com"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Visit PeopleOpsCore"
+          >
             <img className="people-desktop-logo" src={peopleOpsCoreLogo} alt="PeopleOpsCore" />
             <div className="people-mobile-lockup" aria-label="PeopleOpsCore">
               <strong>PeopleOps<span>Core</span></strong>
             </div>
-          </div>
+          </a>
           <div className="venture-copy">
             <p className="venture-label">KSBAA product</p>
             <h3>PeopleOpsCore</h3>

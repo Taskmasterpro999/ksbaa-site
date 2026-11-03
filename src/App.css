@@ -133,7 +133,7 @@ button { color: inherit; }
 .job-row strong { font: 800 clamp(16px, 1.7vw, 25px)/1 var(--mont); }
 .jobs-ticker { margin: 22px -34px -34px; padding: 14px 20px; overflow: hidden; color: #fff; background: #111; font-size: 9px; letter-spacing: .07em; text-transform: uppercase; white-space: nowrap; }
 .people-card { grid-template-columns: 80px 1.1fr .9fr; color: #0b0b0b; background: #e2e2dc; }
-.people-identity { display: grid; grid-column: 2; min-width: 0; place-items: center; overflow: hidden; padding: clamp(48px, 8vw, 120px); background: #fff; }
+.people-identity { display: grid; grid-column: 2; min-width: 0; place-items: center; overflow: hidden; padding: clamp(48px, 8vw, 120px); color: inherit; background: #fff; text-decoration: none; }
 .people-identity img { display: block; width: 100%; max-width: 720px; height: auto; object-fit: contain; mix-blend-mode: multiply; }
 .people-mobile-lockup { display: none; }
 .people-card .venture-copy p { color: #555; }
